@@ -3,7 +3,6 @@ import Login from "@/pages/Login.vue";
 import Signup from "@/pages/Signup.vue";
 import Home from "@/pages/Home.vue";
 import isLogged from "./helpers/isLogged";
-import Test from "./pages/Test.vue";
 
 const routes = [
   { path: "/", redirect: "/login" },
