@@ -2,8 +2,20 @@
 import { Form, Field } from "vee-validate";
 import { signupSchema } from "../helpers/authValidationSchema";
 import FormErrorMessage from "@/components/FormErrorMessage.vue";
-function onSubmitHandler(values) {
-  console.log(values);
+import { signup } from "../api/authApi";
+import { useRouter } from "vue-router";
+import { toast } from "vue3-toastify";
+import toaster from "@/helpers/toaster";
+const router = useRouter();
+async function onSubmitHandler(values) {
+  try {
+    await signup(values.email, values.password);
+    toaster(toast.success, "Successfully signed up!");
+    router.push("/login");
+  } catch (e) {
+    const message = e.response.data.message || "Something went wrong";
+    toaster(toast.error, message);
+  }
 }
 </script>
 <template>

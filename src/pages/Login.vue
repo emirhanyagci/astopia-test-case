@@ -1,12 +1,22 @@
 <script setup>
+import { useRouter } from "vue-router";
 import { Form, Field } from "vee-validate";
 import { loginSchema } from "../helpers/authValidationSchema";
 import FormErrorMessage from "@/components/FormErrorMessage.vue";
 import { toast } from "vue3-toastify";
-import toaster from "../helpers/toaster";
-
-function onSubmitHandler(values) {
-  console.log(values);
+import toaster from "@/helpers/toaster";
+import { login } from "../api/authApi";
+const router = useRouter();
+async function onSubmitHandler(values) {
+  try {
+    const user = await login(values.email, values.password);
+    toaster(toast.success, "Successfully logged in!");
+    localStorage.setItem("jwt", JSON.stringify(user.data.accessToken));
+    router.push({ path: "/home", replace: true });
+  } catch (e) {
+    const message = e.response.data.message || "Something went wrong";
+    toaster(toast.error, message);
+  }
 }
 </script>
 <template>
