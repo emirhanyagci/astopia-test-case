@@ -8,5 +8,6 @@ const app = createApp(App);
 app.use(router);
 app.use(Vue3Toasity, {
   autoClose: 3000,
+  clearOnUrlChange: false,
 });
 app.mount("#app");
