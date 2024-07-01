@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "@/pages/Login.vue";
 import Signup from "@/pages/Signup.vue";
 import Home from "@/pages/Home.vue";
-import isLogged from "./helpers/isLogged";
+import isLogged from "@/helpers/isLogged";
+import ProtectRoutes from "@/components/ProtectRoutes.vue";
 
 const routes = [
   { path: "/", redirect: "/login" },
@@ -10,8 +11,14 @@ const routes = [
   { path: "/signup", component: Signup },
   {
     path: "/home",
-    component: Home,
-    meta: { requiresAuth: true },
+    component: ProtectRoutes,
+    children: [
+      {
+        path: "",
+        component: Home,
+        meta: { requiresAuth: true },
+      },
+    ],
   },
 ];
 const router = createRouter({
@@ -19,12 +26,13 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to, from) => {
-  console.log(to);
-  if (to.meta.requiresAuth) {
-    if (!isLogged()) {
-      return "/login";
-    }
-  }
-});
+// router.beforeEach(async (to, from) => {
+//   console.log(to);
+
+//   if (to.meta.requiresAuth) {
+//     if (!isLogged()) {
+//       return "/login";
+//     }
+//   }
+// });
 export default router;

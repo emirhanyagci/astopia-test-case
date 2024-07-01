@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+// watch
+</script>
 <template>
   home
   <router-view></router-view>

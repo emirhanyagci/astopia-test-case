@@ -1,4 +1,4 @@
 export default () => {
-  const isLoggedIn = false;
+  const isLoggedIn = localStorage.getItem("jwt") || false;
   return isLoggedIn;
 };
