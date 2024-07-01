@@ -7,5 +7,5 @@ const {
 } = require("../validators/authValidators");
 router.post("/login", validateLogin, login);
 router.post("/signup", validateSignup, signup);
-router.post("/refresh", refresh);
+router.get("/refresh", refresh);
 module.exports = router;
