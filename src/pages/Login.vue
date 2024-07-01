@@ -2,6 +2,8 @@
 import { Form, Field } from "vee-validate";
 import { loginSchema } from "../helpers/authValidationSchema";
 import FormErrorMessage from "@/components/FormErrorMessage.vue";
+import { toast } from "vue3-toastify";
+import toaster from "../helpers/toaster";
 
 function onSubmitHandler(values) {
   console.log(values);
@@ -37,7 +39,7 @@ function onSubmitHandler(values) {
               placeholder="m@example.com"
               autocomplete="email"
               required
-              class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
             />
             <FormErrorMessage name="email" />
           </div>
@@ -58,7 +60,7 @@ function onSubmitHandler(values) {
               type="password"
               autocomplete="current-password"
               required
-              class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
             />
             <FormErrorMessage name="password" />
           </div>
@@ -67,7 +69,7 @@ function onSubmitHandler(values) {
         <div>
           <button
             type="submit"
-            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="flex w-full justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800"
           >
             Sign in
           </button>
@@ -79,7 +81,7 @@ function onSubmitHandler(values) {
         <router-link
           to="/signup"
           href="#"
-          class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+          class="font-semibold leading-6 text-slate-800 hover:text-slate-600"
           >Sign up</router-link
         >
       </p>
