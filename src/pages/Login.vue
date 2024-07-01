@@ -1,6 +1,6 @@
 <script setup>
 import { Form, Field } from "vee-validate";
-import authSchema from "../helpers/authSchema";
+import { loginSchema } from "../helpers/authValidationSchema";
 import FormErrorMessage from "@/components/FormErrorMessage.vue";
 
 function onSubmitHandler(values) {
@@ -17,7 +17,7 @@ function onSubmitHandler(values) {
 
     <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
       <Form
-        :validation-schema="authSchema"
+        :validation-schema="loginSchema"
         @submit="onSubmitHandler"
         class="space-y-6"
         action="#"

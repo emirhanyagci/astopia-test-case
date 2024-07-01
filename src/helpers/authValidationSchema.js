@@ -1,12 +1,13 @@
 import * as yup from "yup";
 
-const authSchema = yup.object({
+export const signupSchema = yup.object({
   email: yup
     .string()
     .required("Email is required")
     .email("Email must be a valid email"),
   password: yup
     .string()
+    .trim()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters long")
     .matches(
@@ -23,4 +24,10 @@ const authSchema = yup.object({
       "Password must contain at least one special character"
     ),
 });
-export default authSchema;
+export const loginSchema = yup.object({
+  email: yup
+    .string()
+    .required("Email is required")
+    .email("Email must be a valid email"),
+  password: yup.string().trim().required("Password is required"),
+});
