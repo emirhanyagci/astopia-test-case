@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
@@ -6,16 +7,20 @@ const jwt = require("jsonwebtoken");
 // @route POST /auth/login
 // @access Public
 exports.login = asyncHandler(async (req, res, next) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).json({ message: "Invalid user data received" });
+  }
   const { email, password } = req.body;
   const user = await User.findOne({ email }).exec();
   if (!user) {
-    res.status(401).json({
+    return res.status(401).json({
       message: "User not found with received data",
     });
   }
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    res.status(401).json({
+    return res.status(401).json({
       message: "User not found with received data",
     });
   }
@@ -41,28 +46,32 @@ exports.login = asyncHandler(async (req, res, next) => {
     secure: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
-  res.json({ accessToken });
+  return res.json({ accessToken });
 });
 // @desc signup
 // @route POST /auth/signup
 // @access Public
 exports.signup = asyncHandler(async (req, res, next) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).json({ message: "Invalid user data received" });
+  }
   const { email, password } = req.body;
   //check is email exist
   const duplicateUser = await User.findOne({ email }).exec();
   if (duplicateUser) {
-    res.status(409).json({
+    return res.status(409).json({
       message: "User already exist with this email",
     });
   }
   const hashedPassword = await bcrypt.hash(password, 12);
   const user = await User.create({ email, password: hashedPassword });
   if (user) {
-    res.json({
+    return res.json({
       message: "User succesfully created",
     });
   } else {
-    res.status(400).json({
+    return res.status(400).json({
       message: "Invalid user data received",
     });
   }
@@ -73,7 +82,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
 exports.refresh = asyncHandler((req, res, next) => {
   const cookies = req.cookies;
   if (!cookies) {
-    res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized" });
   }
   const refreshToken = cookies.jwt;
   jwt.verify(
@@ -93,7 +102,7 @@ exports.refresh = asyncHandler((req, res, next) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "15m" }
       );
-      res.json({ accessToken });
+      return res.json({ accessToken });
     })
   );
 });
@@ -104,5 +113,5 @@ exports.logout = asyncHandler((req, res, next) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.sendStatus(204); //No content
   res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
-  res.json({ message: "Cookie cleared" });
+  return res.json({ message: "Cookie cleared" });
 });
