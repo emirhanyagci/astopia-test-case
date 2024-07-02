@@ -29,22 +29,18 @@ async function getPokemonsHandler(page) {
 </script>
 <template>
   <div class="overflow-auto">
-    <table class="w-full text-left [&>tr:not(:last-child)]:border-b min-w-96">
+    <table class="w-full min-w-96 text-left [&>tr:not(:last-child)]:border-b">
       <thead>
         <tr
-          class="text-slate-500 text-sm [&>th]:py-3 [&>th]:font-semibold border-b-slate-400/30 border-b"
+          class="border-b border-b-slate-400/30 text-sm text-slate-500 [&>th]:py-3 [&>th]:font-semibold"
         >
           <th class="w-36 px-5">Image</th>
           <th class="min-w-20">Name</th>
-          <th class="min-w-20">Weight</th>
-          <th class="min-w-20">Height</th>
+          <th class="min-w-20">Weight(kg)</th>
+          <th class="min-w-20">Height(m)</th>
           <th class="w-20">Details</th>
         </tr>
       </thead>
-
-      <!-- <PokeRow></PokeRow>
-      <PokeRow></PokeRow>
-      <PokeRow></PokeRow> -->
 
       <template :key="url" v-for="{ url } in pokemons">
         <PokeRow :pokeUrl="url" />
@@ -55,7 +51,7 @@ async function getPokemonsHandler(page) {
     <Loading size="36" />
   </div>
   <footer
-    class="text-sm text-gray-500 px-5 py-2 flex justify-between items-center"
+    class="flex items-center justify-between px-5 py-2 text-sm text-gray-500"
   >
     <div>
       Showing

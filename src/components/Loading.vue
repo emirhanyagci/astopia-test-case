@@ -10,7 +10,7 @@ const style = {
     <svg
       aria-hidden="true"
       :style="style"
-      class="inline text-gray-300 animate-spin fill-slate-900"
+      class="inline animate-spin fill-slate-900 text-gray-300"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

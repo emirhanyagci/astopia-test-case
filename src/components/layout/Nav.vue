@@ -18,7 +18,7 @@ async function onLogout() {
 }
 </script>
 <template>
-  <nav class="bg-white shadow-nav flex justify-center p-2">
+  <nav class="flex justify-center bg-white p-2 shadow-nav">
     <div class="container flex items-center justify-between">
       <router-link to="/home/pokemon">
         <div>

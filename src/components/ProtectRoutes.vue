@@ -33,7 +33,7 @@ onMounted(async () => {
 <template>
   <div
     v-if="isLoading"
-    class="w-screen h-screen flex justify-center items-center"
+    class="flex h-screen w-screen items-center justify-center"
   >
     <Loading size="64" />
   </div>

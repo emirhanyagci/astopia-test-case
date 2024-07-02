@@ -12,7 +12,7 @@ const { size, onClick, disabled } = defineProps({
   <button
     @click="onClickHandler"
     :disabled="disabled"
-    :class="`bg-white shadow-button p-2 rounded-lg text-gray-500 text-sm transition-all ${
+    :class="`rounded-lg bg-white p-2 text-sm text-gray-500 shadow-button transition-all ${
       disabled ? '' : 'hover:underline'
     } `"
   >

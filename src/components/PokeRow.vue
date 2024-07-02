@@ -25,7 +25,7 @@ onMounted(async () => {
     <td>{{ pokemon.height / 10 }}</td>
     <td>
       <router-link :to="`pokemon/${pokemon.id}`">
-        <button class="bg-indigo-500 shadow-button p-1 rounded-lg">
+        <button class="rounded-lg bg-indigo-500 p-1 shadow-button">
           <Menu class="text-white" />
         </button>
       </router-link>

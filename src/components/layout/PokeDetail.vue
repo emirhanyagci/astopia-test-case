@@ -23,10 +23,10 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="p-5 flex justify-center" v-if="isLoading">
+  <div class="flex justify-center p-5" v-if="isLoading">
     <Loading size="52" />
   </div>
-  <div class="p-5 text-xl text-center" v-else-if="!isLoading && !pokemon">
+  <div class="p-5 text-center text-xl" v-else-if="!isLoading && !pokemon">
     Pokemon not found 😢
   </div>
   <template v-else>
@@ -35,11 +35,11 @@ onMounted(async () => {
         <Button><ArrowLeft size="20" /></Button>
       </router-link>
     </div>
-    <div class="text-center py-2">
+    <div class="py-2 text-center">
       <header class="text-2xl text-slate-800">{{ pokemon.name }}</header>
     </div>
-    <div class="flex justify-center flex-col items-center sm:flex-row">
-      <div class="w-full flex justify-center sm:w-96">
+    <div class="flex flex-col items-center justify-center sm:flex-row">
+      <div class="flex w-full justify-center sm:w-96">
         <img
           :src="pokemon.sprites.front_default"
           class="w-80 sm:w-full"
@@ -49,7 +49,7 @@ onMounted(async () => {
 
       <ul
         id="detail-card"
-        class="grid grid-cols-2 text-center place-content-center p-5 w-3/4 gap-y-3 max-w-96 sm:text-left"
+        class="grid w-3/4 max-w-96 grid-cols-2 place-content-center gap-y-3 p-5 text-center sm:text-left"
       >
         <li>
           <span class="detail-header col-span-1">Height (m)</span
@@ -61,7 +61,7 @@ onMounted(async () => {
         </li>
         <li class="col-span-2">
           <span class="detail-header">Abilities</span>
-          <div class="flex">
+          <div class="flex justify-center sm:justify-start">
             <span
               :key="ability.url"
               v-for="({ ability }, index) in pokemon.abilities"
