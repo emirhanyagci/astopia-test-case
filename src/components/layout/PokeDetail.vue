@@ -1,10 +1,11 @@
 <script setup>
 import { ArrowLeft } from "lucide-vue-next";
+import Button from "../Button.vue";
 </script>
 <template>
   <div class="p-3">
     <router-link to="/home/pokemon">
-      <button class="shadow-button p-1 rounded-lg"><ArrowLeft /></button>
+      <Button><ArrowLeft size="20" /></Button>
     </router-link>
   </div>
   <div class="text-center py-2">

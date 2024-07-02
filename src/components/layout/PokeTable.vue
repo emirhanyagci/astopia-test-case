@@ -1,5 +1,6 @@
 <script setup>
 import PokeRow from "@/components/PokeRow.vue";
+import Button from "../Button.vue";
 import { ChevronLeft, ChevronRight } from "lucide-vue-next";
 </script>
 <template>
@@ -29,16 +30,8 @@ import { ChevronLeft, ChevronRight } from "lucide-vue-next";
       <span class="font-bold">32</span> products
     </div>
     <div class="flex items-center gap-2">
-      <button
-        class="bg-white shadow-button p-2 rounded-lg transition-all hover:underline"
-      >
-        Previous
-      </button>
-      <button
-        class="bg-white shadow-button p-2 rounded-lg transition-all hover:underline"
-      >
-        Next
-      </button>
+      <Button> Previous</Button>
+      <Button> Next</Button>
     </div>
   </footer>
 </template>
