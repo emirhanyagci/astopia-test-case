@@ -1,19 +1,30 @@
 <script setup>
 import { Menu } from "lucide-vue-next";
+import { onMounted, ref } from "vue";
+import { getPokemonWithUrl } from "../api/pokemonApi";
+const { pokeUrl } = defineProps(["pokeUrl"]);
+const pokemon = ref(null);
+
+onMounted(async () => {
+  try {
+    const poke = await getPokemonWithUrl(pokeUrl);
+    const { sprites, name, weight, height, id } = poke.data;
+    pokemon.value = { sprites, name, weight, height, id };
+  } catch (e) {
+    console.log(e);
+  }
+});
 </script>
 <template>
-  <tr class="">
+  <tr v-if="pokemon">
     <td>
-      <img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        alt=""
-      />
+      <img :src="pokemon.sprites.front_default" />
     </td>
-    <td>Ditto</td>
-    <td>50</td>
-    <td>9</td>
+    <td>{{ pokemon.name }}</td>
+    <td>{{ pokemon.weight / 10 }}</td>
+    <td>{{ pokemon.height / 10 }}</td>
     <td>
-      <router-link to="pokemon/1">
+      <router-link :to="`pokemon/${pokemon.id}`">
         <button class="bg-indigo-500 shadow-button p-1 rounded-lg">
           <Menu class="text-white" />
         </button>
