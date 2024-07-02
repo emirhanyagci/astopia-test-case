@@ -13,9 +13,11 @@ import { Menu } from "lucide-vue-next";
     <td>50</td>
     <td>9</td>
     <td>
-      <button class="bg-indigo-500 shadow-button p-1 rounded-lg">
-        <Menu class="text-white" />
-      </button>
+      <router-link to="pokemon/1">
+        <button class="bg-indigo-500 shadow-button p-1 rounded-lg">
+          <Menu class="text-white" />
+        </button>
+      </router-link>
     </td>
   </tr>
 </template>

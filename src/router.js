@@ -4,7 +4,7 @@ import Signup from "@/pages/Signup.vue";
 import Home from "@/pages/Home.vue";
 import ProtectRoutes from "@/components/ProtectRoutes.vue";
 import PokeDetail from "./components/layout/PokeDetail.vue";
-import Hero from "@/components/layout/Hero.vue";
+import PokeTable from "./components/PokeTable.vue";
 const routes = [
   { path: "/", redirect: "/login" },
   { path: "/login", component: Login },
@@ -21,7 +21,7 @@ const routes = [
         children: [
           {
             path: "pokemon",
-            component: Hero,
+            component: PokeTable,
           },
           {
             path: "pokemon/:id",
