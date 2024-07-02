@@ -12,6 +12,7 @@
     "add": "^2.0.6",
     "axios": "^1.7.2",
     "jwt-decode": "^4.0.0",
+    "lucide-vue-next": "^0.400.0",
     "vee-validate": "^4.13.1",
     "vue": "^3.4.29",
     "vue-router": "4",

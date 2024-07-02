@@ -1,8 +1,13 @@
 <script setup>
+import Nav from "@/components/layout/Nav.vue";
+import Hero from "@/components/layout/Hero.vue";
+
 // watch
 </script>
 <template>
-  home
-  <router-view></router-view>
+  <div class="space-y-6">
+    <Nav></Nav>
+    <Hero></Hero>
+  </div>
 </template>
 <style></style>
