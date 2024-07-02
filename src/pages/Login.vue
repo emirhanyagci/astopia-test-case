@@ -23,7 +23,7 @@ async function onSubmitHandler(values) {
   <div class="flex min-h-full flex-col justify-center px-6 py-24 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <div class="flex justify-center">
-        <img src="/public/logo.png" alt="" class="w-72" />
+        <img src="/logo.png" alt="" class="w-72" />
       </div>
     </div>
 
