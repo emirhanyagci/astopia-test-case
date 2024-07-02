@@ -11,3 +11,4 @@ app.use(Vue3Toasity, {
   clearOnUrlChange: false,
 });
 app.mount("#app");
+// don't forget add class sorter

@@ -4,7 +4,7 @@ import Signup from "@/pages/Signup.vue";
 import Home from "@/pages/Home.vue";
 import ProtectRoutes from "@/components/ProtectRoutes.vue";
 import PokeDetail from "./components/layout/PokeDetail.vue";
-import PokeTable from "./components/PokeTable.vue";
+import PokeTable from "./components/layout/PokeTable.vue";
 const routes = [
   { path: "/", redirect: "/login" },
   { path: "/login", component: Login },
