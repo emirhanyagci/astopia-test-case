@@ -7,7 +7,7 @@ import Hero from "@/components/layout/Hero.vue";
 <template>
   <div class="space-y-6">
     <Nav></Nav>
-    <Hero></Hero>
+    <router-view></router-view>
   </div>
 </template>
 <style></style>

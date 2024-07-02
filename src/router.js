@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "@/pages/Login.vue";
 import Signup from "@/pages/Signup.vue";
 import Home from "@/pages/Home.vue";
-import isLogged from "@/helpers/isLogged";
 import ProtectRoutes from "@/components/ProtectRoutes.vue";
-
+import PokeDetail from "./components/layout/PokeDetail.vue";
+import Hero from "@/components/layout/Hero.vue";
 const routes = [
   { path: "/", redirect: "/login" },
   { path: "/login", component: Login },
@@ -16,7 +16,18 @@ const routes = [
       {
         path: "",
         component: Home,
+        redirect: "home/pokemon",
         meta: { requiresAuth: true },
+        children: [
+          {
+            path: "pokemon",
+            component: Hero,
+          },
+          {
+            path: "pokemon/:id",
+            component: PokeDetail,
+          },
+        ],
       },
     ],
   },

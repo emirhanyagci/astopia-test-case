@@ -12,7 +12,7 @@ async function onSubmitHandler(values) {
     const user = await login(values.email, values.password);
     toaster(toast.success, "Successfully logged in!");
     localStorage.setItem("jwt", JSON.stringify(user.data.accessToken));
-    router.push({ path: "/home", replace: true });
+    router.push({ path: "/home/pokemon", replace: true });
   } catch (e) {
     const message = e.response.data.message || "Something went wrong";
     toaster(toast.error, message);
