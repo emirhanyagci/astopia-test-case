@@ -1,8 +1,8 @@
 <script setup>
-const props = defineProps(["size"]);
+const { size } = defineProps(["size"]);
 const style = {
-  width: props.size + "px",
-  height: props.size + "px",
+  width: size + "px",
+  height: size + "px",
 };
 </script>
 <template>
@@ -28,6 +28,4 @@ const style = {
   </div>
 </template>
 
-<style scoped>
-/* Your component's styles go here */
-</style>
+<style></style>
