@@ -3,6 +3,7 @@ import { Form, Field } from "vee-validate";
 import { signupSchema } from "../helpers/authValidationSchema";
 import FormErrorMessage from "@/components/FormErrorMessage.vue";
 import { signup } from "../api/authApi";
+import { Ban } from "lucide-vue-next";
 import { useRouter } from "vue-router";
 import { toast } from "vue3-toastify";
 import { ref } from "vue";
@@ -10,14 +11,17 @@ import toaster from "@/helpers/toaster";
 import PasswordStrengthIndicator from "../components/PasswordStrengthIndicator.vue";
 const router = useRouter();
 const password = ref("");
-
+const isLoading = ref(false);
 async function onSubmitHandler(values) {
   try {
+    isLoading.value = true;
     await signup(values.email, values.password);
     toaster(toast.success, "Successfully signed up!");
+    isLoading.value = false;
     router.push("/login");
   } catch (e) {
     const message = e.response.data.message || "Something went wrong";
+    isLoading.value = false;
     toaster(toast.error, message);
   }
 }
@@ -85,10 +89,12 @@ async function onSubmitHandler(values) {
 
         <div>
           <button
+            :disabled="isLoading"
             type="submit"
             class="flex w-full justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800"
           >
-            Sign up
+            <Ban v-if="isLoading" class="text-gray-500" />
+            <span v-else> Sign up </span>
           </button>
         </div>
       </Form>

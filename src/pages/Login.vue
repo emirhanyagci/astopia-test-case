@@ -1,20 +1,26 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { Form, Field } from "vee-validate";
+import { ref } from "vue";
+import { Ban } from "lucide-vue-next";
 import { loginSchema } from "../helpers/authValidationSchema";
 import FormErrorMessage from "@/components/FormErrorMessage.vue";
 import { toast } from "vue3-toastify";
 import toaster from "@/helpers/toaster";
-import { login } from "../api/authApi";
+import { login } from "@/api/authApi";
 const router = useRouter();
+const isLoading = ref(false);
 async function onSubmitHandler(values) {
   try {
+    isLoading.value = true;
     const user = await login(values.email, values.password);
     toaster(toast.success, "Successfully logged in!");
     localStorage.setItem("jwt", JSON.stringify(user.data.accessToken));
+    isLoading.value = false;
     router.push({ path: "/home/pokemon", replace: true });
   } catch (e) {
     const message = e.response.data.message || "Something went wrong";
+    isLoading.value = false;
     toaster(toast.error, message);
   }
 }
@@ -78,10 +84,12 @@ async function onSubmitHandler(values) {
 
         <div>
           <button
+            :disabled="isLoading"
             type="submit"
             class="flex w-full justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800"
           >
-            Sign in
+            <Ban v-if="isLoading" class="text-gray-500" />
+            <span v-else> Sign in </span>
           </button>
         </div>
       </Form>
