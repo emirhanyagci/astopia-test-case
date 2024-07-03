@@ -17,7 +17,7 @@ Installing packages
 ```
 Create `.env.local` for root and create `.env` for /backend then fill by reference from example files
 ```env
- //.env
+.env
 ENV=development
 PORT=3000
 MONGO_URI=
@@ -31,7 +31,7 @@ For secret keys run that for twice
 ```
 Don't forget if you gonna change this `VITE_BASE_URL` firstly change the `PORT` variable from `.env`
 ```env
- //.env.local
+.env.local
 VITE_BASE_URL=http://localhost:3000
 ```
 ## Config
