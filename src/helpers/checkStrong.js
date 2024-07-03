@@ -3,7 +3,6 @@ const checkStrong = (password) => {
   const weakReg = RegExp(/^(?=.*[a-z])(?=.*[A-Z])/);
   const moderateReg = RegExp(/^(?=.*[0-9])/);
   const strongReg = RegExp(/^(?=.*[!@#$%^&*])/);
-  console.log(password);
   if (password.length <= 0) {
     return false;
   }

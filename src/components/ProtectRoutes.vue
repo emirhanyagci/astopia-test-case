@@ -17,7 +17,6 @@ onMounted(async () => {
   if (!verifyJwt(accessToken)) {
     try {
       const newToken = await refresh();
-      console.log(newToken);
       localStorage.setItem("jwt", JSON.stringify(newToken.data.accessToken));
       isLoading.value = false;
     } catch (e) {

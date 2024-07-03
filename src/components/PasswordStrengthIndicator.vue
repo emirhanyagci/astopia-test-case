@@ -4,7 +4,6 @@ import checkStrong from "@/helpers/checkStrong";
 const props = defineProps(["password"]);
 
 const strongCheck = computed(() => {
-  console.log(props.password);
   return checkStrong(props.password);
 });
 </script>

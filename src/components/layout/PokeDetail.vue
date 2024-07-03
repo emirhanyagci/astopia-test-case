@@ -16,7 +16,6 @@ onMounted(async () => {
     const { name, sprites, weight, height, abilities } = poke.data;
     pokemon.value = { name, sprites, weight, height, abilities };
     isLoading.value = false;
-    console.log(pokemon.value);
   } catch (e) {
     isLoading.value = false;
   }

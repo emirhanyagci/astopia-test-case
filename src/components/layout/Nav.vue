@@ -13,7 +13,7 @@ async function onLogout() {
     toaster(toast.success, "Successfully logged out!");
     router.push("/login");
   } catch (e) {
-    console.log("logout");
+    console.log(e);
   }
 }
 </script>
