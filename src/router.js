@@ -31,6 +31,7 @@ const routes = [
       },
     ],
   },
+  { path: "/:pathMatch(.*)*", redirect: "/home" },
 ];
 const router = createRouter({
   history: createWebHistory(),
