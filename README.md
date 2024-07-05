@@ -47,7 +47,7 @@ const allowedOrigins = [
 - Vue3 
 - Tailwindcss
 - Axios
-- [VeeValidate + Yup: For client side validation]([https://express-validator.github.io/docs](https://vee-validate.logaretm.com/v4/))
+- [VeeValidate + Yup: For client side validation](https://vee-validate.logaretm.com/v4/)
 - Nodejs + Express + Jwt: For authentication
 - Mongoose
 - [Express Validator : For server side validation](https://express-validator.github.io/docs)
