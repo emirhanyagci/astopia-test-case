@@ -60,13 +60,15 @@ onMounted(async () => {
         </li>
         <li class="col-span-2">
           <span class="detail-header">Abilities</span>
-          <div class="flex justify-center sm:justify-start">
+          <div
+            class="flex flex-wrap items-center justify-center sm:justify-start"
+          >
             <span
               :key="ability.url"
               v-for="({ ability }, index) in pokemon.abilities"
             >
-              {{ ability.name }}
-              {{ index + 1 !== pokemon.abilities.length ? "," : null }}
+              {{ ability.name
+              }}{{ index + 1 !== pokemon.abilities.length ? "," : null }}
             </span>
           </div>
         </li>
